@@ -1,5 +1,19 @@
 fn median(a: Vec<f32>) -> Option<f32> {
-    todo!();
+    if a.is_empty() {
+        return None;
+    }
+    let mut b = a;
+    b.sort_unstable_by(|a, b| a.partial_cmp(b).unwrap());
+    let a_len = b.len();
+    let n = a_len / 2;
+    if a_len % 2 == 0 {
+        // even case
+        return Some((b[n-1] + b[n]) / 2.0);
+    } else {
+        // odd case
+        return Some(b[n]);
+    }
+
 }
 
 fn main() {
