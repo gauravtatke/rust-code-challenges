@@ -1,5 +1,13 @@
 fn sort_usernames<T: AsRef<str>>(usernames: &mut Vec<T>) {
-    todo!();
+    sort_usernames_sol2(usernames);
+}
+
+fn sort_usernames_sol1<T: AsRef<str>>(usernames: &mut Vec<T>) {
+    usernames.sort_by(|a, b| a.as_ref().to_lowercase().cmp(&b.as_ref().to_lowercase()));
+}
+
+fn sort_usernames_sol2<T: AsRef<str>>(usernames: &mut Vec<T>) {
+    usernames.sort_by_cached_key(|key| key.as_ref().to_lowercase());
 }
 
 fn main() {
