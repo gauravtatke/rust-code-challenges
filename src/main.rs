@@ -1,5 +1,13 @@
-fn info(a: &T) {
-    todo!();
+use std::fmt::Display;
+
+fn info<T: Display>(a: &T) {
+    println!("{}", a);
+}
+
+fn info_sol2<T: AsRef<str>>(a: T) {
+    // any T that can be taken as ref to a str which is u8
+    // can also be printed
+    println!("{}", a.as_ref());
 }
 
 fn main() {
@@ -24,13 +32,13 @@ fn main() {
 #[test]
 fn str() {
     let input = "Rust";
-    info(&input);
+    info_sol2(&input);
 }
 
 #[test]
 fn string() {
     let input = String::from("Rust");
-    info(&input);
+    info_sol2(&input);
 }
 
 // #[test]
